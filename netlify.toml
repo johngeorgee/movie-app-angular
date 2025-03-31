@@ -2,10 +2,7 @@
   command = "ng build --configuration=production"
   publish = "dist/popcorn-hub"
 
-[[plugins]]
-  package = "@netlify/angular-runtime"
-  [plugins.inputs]
-    enabled = false
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
