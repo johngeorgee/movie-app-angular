@@ -1,0 +1,13 @@
+<div class="container-fluid px-0">
+    <div class="row">
+        <app-nav-bar></app-nav-bar>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <app-side-bar (categoryMSelected)="onCategorySelect($event)"></app-side-bar>
+        </div>
+        <div class="col-lg-10 col-md-8 col-sm-6">
+            <app-movies-list [movieCatId]="selectedMovieID"></app-movies-list>
+        </div>
+    </div>
+</div>

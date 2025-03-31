@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class=" d-flex align-items-center">
+        <a class="navbar-brand" ><img src="/logo.jpeg" alt="logo" class="logo"></a>
+        <h1 class="text-white">Popcorn Hub</h1>
+    
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          
+          <li class="nav-item">
+            <form class="d-flex" role="search" (submit)="onSearch(searchInput.value)">
+                <input #searchInput class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+              </form>
+          </li>
+        
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item d-flex justify-content-space-between gap-2">
+            <button class="btn btn-primary" (click)="toggleTheme()">Dark Mode</button>
+            <button class="btn btn-success" routerLink="/Home">Home</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

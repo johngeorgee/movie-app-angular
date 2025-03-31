@@ -1,0 +1,136 @@
+<div class="container-fluid" style="width: 100%">
+  <app-nav-bar></app-nav-bar>
+</div>
+
+<h3 class="text-center my-4">Episode Details</h3>
+<div class="container my-4">
+
+  <div class="row">
+      <div class="card mb-3" *ngIf="episode">
+          <div class="row g-0">
+              <div class="col-md-4" *ngIf="episode.still_path  "> 
+                  <img [src]="'https://image.tmdb.org/t/p/w500' + episode.still_path" class="img-fluid rounded-start h-100" [alt]="episode.name" *ngIf="episode.still_path ">
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                  <div class="d-flex gap-2 my-1">
+                      <strong>Title :</strong><h5 class="card-title d-block">{{episode.name}}</h5>
+                  </div >
+                  <div class="d-flex gap-2  my-1">
+                      <strong>Episode Type:</strong><p class="card-text">{{episode.episode_type}}</p>
+                  </div>
+                  <div class="d-flex gap-2  my-1">
+                      <strong>Release date</strong><p class="card-text">{{episode.air_date}}</p>
+                  </div>
+                  <div class="d-flex gap-2  my-1">
+                      <strong>Season Number: </strong><p class="card-text">{{episode.season_number}}</p>
+                  </div> 
+                  <div class="d-flex gap-2  my-1">
+                      <strong>Vote average: </strong><p class="card-text">{{episode.vote_average}}</p>
+                  </div>
+                  <div class="d-flex gap-2  my-1">
+                      <strong>Episode Number: </strong><p class="card-text">{{episode.episode_number}}</p>
+                  </div>
+                  <div class="d-flex gap-2  my-1 flex-wrap">
+                      <strong>Overview :</strong><p class="card-text">{{episode.overview}}</p>
+                  </div>
+          </div>
+              </div>
+          </div>
+      </div>
+      
+  </div>
+</div> 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="text-center my-3">Recommended Episodes</h3>
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-lg-4  col-md-6 col-sm-12 my-2 d-flex align-items-stretch align-self-stretch" *ngFor="let allEpisodes of episodes" >
+                        <div class="card  my-3 mx-2" style="width: 18rem; height:auto" >
+                          <img [src]="'https://image.tmdb.org/t/p/w500' + allEpisodes.still_path" class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='allEpisodes.name' *ngIf="allEpisodes.still_path ">
+                          <div class="card-body">
+                            <h5 class="card-title">{{allEpisodes.name}}</h5>
+                            <div class="d-flex gap-2 my-1">
+                                <strong>Air Date:</strong>
+                                <p class="card-text">{{allEpisodes.air_date}}</p> 
+                                
+                            </div>
+                            
+                            <button class="btn btn-warning" (click)="goToDetailedEpisode(seriesId, seasonNumber, allEpisodes.episode_number)">Episode Details</button>
+            
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="container side">
+                <h3 class="text-center my-4">Series</h3>
+                <div class="row align-items-center flex-column">
+                  <div class="col d-flex justify-content-center w-100" *ngIf="series">
+                    <div class="card my-2 mx-3" style="width: 18rem;" >
+                      <img [src]="'https://image.tmdb.org/t/p/w500' + series.poster_path" class="card-img-top" [alt]="series.name" *ngIf="series.poster_path">
+                      <div class="card-body">
+                        <h5 class="card-title">{{series.name}}</h5>
+                        <div class="d-flex gap-2">
+                          <strong>Number Of Seasons:</strong>
+                          <p class="card-text">{{series.number_of_seasons}}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                          <strong>Number Of Episodes:</strong>
+                          <p class="card-text">{{series.number_of_episodes}}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                          <strong>Voters:</strong>
+                          <p class="card-text">{{series.vote_count}}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                          <strong>Rate: </strong>
+                          <p class="card-text">{{series.vote_average}}</p>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap" *ngIf="series.overview!=''">
+                          <strong>Overview: </strong>
+                          <p class="card-text">{{series.overview}}</p>
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+                  <h3 class="text-center my-3">Season</h3>
+                  <div class="col d-flex justify-content-center w-100" *ngIf="season">
+                    <div class="card my-2 mx-3" style="width: 18rem;" >
+                      <img [src]="'https://image.tmdb.org/t/p/w500' + season.poster_path" class="card-img-top" [alt]="season.name" *ngIf="season.poster_path ">
+                      <div class="card-body">
+                        <h5 class="card-title">{{season.name}}</h5>
+                        <div class="d-flex gap-2">
+                          <strong>Number Of Episodes:</strong>
+                          <p class="card-text">{{season.episodes.length}}</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                          <strong>Air date:</strong>
+                          <p class="card-text">{{season.air_date}}</p>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                          <strong>Rate: </strong>
+                          <p class="card-text">{{season.vote_average}}</p>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap" *ngIf="season.overview!='' ">
+                          <strong>Overview: </strong>
+                          <p class="card-text">{{season.overview}}</p>
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

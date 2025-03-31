@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+
+<h3 class="text-center my-4">Your Wishlist</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-6 my-3 d-flex justify-content-center" *ngFor="let item of wishlistMovie">
+            <div class="card" style="width: 18rem; height: 100%;"  >
+                <img [src]="'https://image.tmdb.org/t/p/w500'+ item.poster_path" class="card-img-top" [alt]="item.name">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.title}}</h5>
+                  <p class="card-text">{{item.release_date}}</p>
+                  <p class="card-text">{{ item.overview }}</p>
+                  <div class="d-flex gap-3">
+                    <a [routerLink]="['/Movies' , item.id]" class="btn btn-primary">Details</a>
+                    <a  class="btn btn-danger" (click)="removeM(item.id)">Remove</a>
+                  </div>
+                 
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-6 my-3 d-flex justify-content-center" *ngFor="let item of wishlistSeries">
+            <div class="card  h-100" style="width: 18rem;" >
+                <img [src]="'https://image.tmdb.org/t/p/w500' + item.poster_path" class="card-img-top" [alt]="item.name">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="card-text">{{item.first_air_date}}</p>
+                  <p class="card-text">{{item.overview}}</p>
+                  <div class="d-flex gap-3">
+                    <a [routerLink]="['/Series', item.id]" class="btn btn-primary">Details</a>
+                    <a  class="btn btn-danger" (click)="removeS(item.id)">Remove</a>
+                  </div>
+                
+
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

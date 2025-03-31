@@ -1,0 +1,94 @@
+ <app-nav-bar></app-nav-bar>
+
+ <h3 class="my-3 text-center">Season Details </h3>
+ <div class="container">
+    <div class="row">
+      <ng-container *ngIf="series">
+        <div class="card mb-3" style="max-width: 100%; " *ngIf="season">
+          <div class="row g-0">
+            <div class="col-md-4" *ngIf="season.poster_path">
+              <img [src]="'https://image.tmdb.org/t/p/w500/'+ (season.poster_path)" class="img-fluid rounded-start" [alt]="season.name" *ngIf="season.poster_path" >
+            </div>
+            <div class="col-md-4">
+              <div class="card-body">
+                <div class="d-flex gap-2 my-1 flex-wrap">
+                  <strong>Series :</strong>
+                  <h5 class="card-text">{{series.name}}</h5>
+                </div>
+                <div class="d-flex gap-2 my-1">
+                  <strong>Air Date :</strong>
+                  <p class="card-text">{{series.last_air_date}}</p>
+
+                </div>
+                
+                <div class="d-flex gap-2 my-1">
+                  <strong>Number of Seasons :</strong>
+                  <p class="card-text">{{series.number_of_seasons}}</p>
+                </div>
+                <div class="d-flex gap-2 my-1">
+                  <strong>Total Number of Episodes :</strong>
+                  <p class="card-text">{{series.number_of_episodes}}</p>
+                </div>
+                <div class="d-flex gap-2 my-1 flex-wrap">
+                  <strong>Overview:</strong>
+                  <p class="card-text">{{series.overview}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-body">
+                <div class="d-flex gap-2 my-1">
+                  <strong>Season:</strong>
+                  <h5 class="card-text">{{season.name}}</h5>
+                </div>
+                <div class="d-flex gap-2 my-1">
+                  <strong>Air date:</strong>
+                  <p class="card-text">{{season.air_date}}</p>
+                </div>
+                <div class="d-flex gap-2 my-1">
+                  <strong>Season Number:</strong>
+                  <p class="card-text">{{season.season_number}}</p>
+  
+                </div>
+                <div class="d-flex gap-2 my-1">
+                  <strong>Vote Average:</strong>
+                  <p class="card-text">{{season.vote_average}}</p>
+                </div>
+                <div class="d-flex gap-2 my-1" *ngIf="season.episodes">
+                  <strong>Season Episodes:</strong>
+                  <p class="card-text">{{episode}}</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap my-1" *ngIf="season.overview!=''">
+                  <strong>Overview:</strong>
+  
+                  <p class="card-text">{{season.overview}}</p>
+  
+                </div>
+                
+                <div>
+                  <button class="btn btn-warning" (click)="goToAllEpisodes(seriesId, season.season_number)">Go to Episodes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      
+    </div>
+  </div>
+  <h3 class="text-center my-4" *ngIf="allS ">Suggested Seasons</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 d-flex   justify-content-center align-items-stretch align-self-stretch my-2" *ngFor="let seasons of allSeasons">
+        <div class="card my-3 mx-2" style="width: 18rem;" >
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + seasons.poster_path" class="card-img-top" *ngIf="seasons.poster_path" >
+        <div class="card-body">
+          <h5 class="card-title">{{seasons.name}}</h5>
+          <p class="card-text">{{seasons.air_date}}</p>
+          <a class="btn btn-primary" (click)="goToDetailedSeason(seriesId, seasons.season_number)">Go To Detailed Season</a>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </div>

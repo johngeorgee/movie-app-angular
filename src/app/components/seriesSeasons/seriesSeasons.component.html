@@ -1,0 +1,74 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-8">
+      <h3 class="text-center my-2" *ngIf="season">All Seasons</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4  col-md-6 col-sm-12 my-2 d-flex align-items-stretch align-self-stretch justify-content-center" *ngFor="let season of seasons" >
+            <div class="card  my-3 mx-2" style="width: 18rem; height:100%" >
+              <img [src]="'https://image.tmdb.org/t/p/w500' + season.poster_path " class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='season.name' *ngIf="season.poster_path" >
+              <div class="card-body">
+                <h5 class="card-title">{{season.name}}</h5>
+                
+                  
+                <div class="d-flex my-2 gap-2">
+                  <strong>Release date : </strong>
+                  <p>{{season.air_date}}</p>
+                </div>
+                <div class="d-flex my-2 gap-2">
+                  <strong>Number of episodes: </strong>
+                  <p>{{season.episode_count}}</p>
+                </div>
+                
+              
+                
+                <div *ngIf="seriesId">
+                  <a  class="btn btn-primary" (click)="goToDetailedSeason(seriesId , season.season_number)" >Details</a> 
+                </div>
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-4 ">
+      
+      <div class="container side">
+        <h3 class="text-center my-3">Series</h3>
+        <div class="row">
+          <div class="col d-flex justify-content-center w-100" *ngIf="series">
+            <div class="card my-2 mx-3" style="width: 18rem;" >
+              <img [src]="'https://image.tmdb.org/t/p/w500' + series.poster_path" class="card-img-top" [alt]="series.name">
+              <div class="card-body">
+                <h5 class="card-title">{{series.name}}</h5>
+                <div class="d-flex gap-2">
+                  <strong>Number Of Seasons:</strong>
+                  <p class="card-text">{{series.number_of_seasons}}</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <strong>Number Of Episodes:</strong>
+                  <p class="card-text">{{series.number_of_episodes}}</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <strong>Voters:</strong>
+                  <p class="card-text">{{series.vote_count}}</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <strong>Rate: </strong>
+                  <p class="card-text">{{series.vote_average}}</p>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

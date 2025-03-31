@@ -1,0 +1,109 @@
+ <div class="container-fluid" style="width: 100%">
+    <app-nav-bar></app-nav-bar>
+</div>
+<div class="container my-4">
+    <div class="row">
+        <div class="card mb-3" *ngIf="series">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img [src]="'https://image.tmdb.org/t/p/w500' + series.poster_path" class="img-fluid rounded-start h-100" [alt]="series.name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <div class="d-flex gap-2 my-1">
+                        <strong>Title :</strong><h5 class="card-title d-block">{{series.name}}</h5>
+                    </div >
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Original Language</strong><p class="card-text">{{series.original_language}}</p>
+                    </div>
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Release date</strong><p class="card-text">{{series.air_date }}</p>
+                    </div>
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Voters: </strong><p class="card-text">{{series.vote_count}}</p>
+                    </div> 
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Vote average: </strong><p class="card-text">{{series.vote_average}}</p>
+                    </div>
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Number of Seasons: </strong><p class="card-text">{{series.number_of_seasons}}</p>
+                    </div>
+
+                    <div class="d-flex gap-2  my-1">
+                        <strong>Number of Episodes: </strong><p class="card-text">{{series.number_of_episodes}}</p>
+                    </div>
+                    <div class="d-flex gap-2  my-1 flex-wrap">
+                        <strong>Overview :</strong><p class="card-text">{{series.overview}}</p>
+                    </div>
+                    <div class="d-flex gap-2 my-1">
+                        <button class="btn btn-warning" (click)="AllSeasons(series.id)">Go To Seasons</button>
+                    </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container">
+                <div class="row">
+                    
+                    <h3 class="text-center my-2" *ngIf="cast?.length">Cast</h3>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch justify-content-center" 
+                             *ngFor="let actor of cast?.slice(0,6)">
+                            <div class="card mx-2 my-3" style="width: 18rem;">
+                                <img [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path" 
+                                     class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='actor.name'>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{actor.name}}</h5>
+                                    <p>{{actor.known_for_department}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                    <h3 class="text-center my-2" *ngIf="crew?.length">Crew</h3>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch justify-content-center" 
+                             *ngFor="let member of crew?.slice(0,6)">
+                            <div class="card mx-2 my-3" style="width: 18rem;">
+                                <img [src]="member.profile_path ? 'https://image.tmdb.org/t/p/w500' + member.profile_path : 'assets/default-profile.png'"
+                                     class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='member.name'>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{member.name}}</h5>
+                                    <p>{{member.known_for_department}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 ">
+            <div class="container side">
+                <h3 class="text-center">Recommendations</h3>
+                <div class="row">
+                    <div class="col my-2 d-flex align-items-stretch align-self-stretch justify-content-center" *ngFor="let s of recommendations | slice: 0:6 " >
+                        <div class="card  my-3 mx-2" style="width: 18rem;" *ngIf="s.poster_path"  >
+                          <img [src]="'https://image.tmdb.org/t/p/w500' + (s.poster_path ? s.poster_path : s.backdrop_path)" class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='s.name'>
+                          <div class="card-body">
+                            <h5 class="card-title">{{s.name}}</h5>
+                  
+                            <a  class="btn btn-primary" (click)="goToDetailedSeries(s.id)">Details</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+ 
+
+

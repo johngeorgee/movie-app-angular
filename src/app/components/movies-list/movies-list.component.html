@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4  col-md-6 col-sm-12 my-2 d-flex align-items-stretch align-self-stretch justify-content-center" *ngFor="let movie of movList" >
+      <div class="card  my-3 mx-2" style="width: 18rem; height:600px" >
+        <img [src]="'https://image.tmdb.org/t/p/w500' + (movie.poster_path ? movie.poster_path : movie.backdrop_path)" class="card-img-top" style="height: 450px; object-fit: cover;" [alt]='movie.title'>
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+          <div class="d-flex gap-4">
+            <div>
+              <a  class="btn btn-warning" (click)="goToDetailedMovie(movie.id)">Details</a>
+            </div>
+            <div class="d-flex">
+              <button class="btn btn-warning"   title="Add To Wishlist" (click)="addMovieToWishlist(movie)" >
+                <img src="/plus-circle.svg">
+              </button>
+            </div>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

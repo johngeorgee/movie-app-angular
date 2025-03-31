@@ -1,0 +1,22 @@
+.categoriesContainer{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.side-bar{
+    background-color: var(--sidebar);
+    height: 100vh;
+    min-width: 250px;
+
+}
+li,ul{
+    padding: 2px;
+}
+ul{
+    margin-top: 2px;
+}
+.navbar-toggler{
+    position: absolute;
+    top: 10px;
+    left:25%
+}

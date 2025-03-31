@@ -1,0 +1,25 @@
+<app-nav-bar></app-nav-bar>
+
+<h2 class="text-center my-2">Showing results of : {{searchQuery}}</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex   justify-content-center align-items-stretch align-self-stretch my-2" *ngFor="let item of searchResults; let i=index">
+      <div class="card" style="width: 18rem;" >
+        
+        <img *ngIf="item.poster_path!=null"[src]="'https://image.tmdb.org/t/p/w500/' + item.poster_path " class="card-img-top" [alt]="item.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.media_type == 'movie' ? item.title : item.name }} </h5>
+          <div class="d-flex gap-2 my-2">
+             
+          
+            <strong>Type: </strong><p class="card-text">{{item.media_type}}</p>
+          </div>
+
+          <a class="btn btn-primary" (click)="goToDetails(item.id, item.media_type)">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

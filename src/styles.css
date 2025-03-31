@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --navbar: #4a90e2;
+    --sidebar: #e0e0e0;
+    --card: #205781;
+    --text: #022344;
+    --title: white;
+    --button:   #007bff ;
+    --background-color: #f5efef;
+}
+.dark-mode{
+    --navbar: #2c3e50;
+    --sidebar: #444;
+    --card: #1e3799;
+    --title: black;
+    --button: #f39c12;
+    --text: #54b1bc;
+    --background-color: #2b2b2b;
+
+
+}
+body {
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text);
+    transition: all 0.3s ease-in-out;
+}
+.card{
+    background-color: var(--card);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.3s all;
+    overflow: hidden;
+}
+.card:hover{
+    transform: scale(.98);
+    border: 2px solid red;
+}
+.card-title{
+    color: var(--title);
+}
+.card-text{
+    color: var(--text);
+}
+strong{
+    color: var(--title)
+}
+.side-bar{
+    background-color: var(--sidebar);
+    height: 100vh;
+    min-width: 250px;
+
+}
+.side{
+    background-color: var(--sidebar);
+}

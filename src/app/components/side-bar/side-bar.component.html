@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-expand-lg side-bar">
+    <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation" >
+            <span class="navbar-toggler-icon"></span>
+            <span class="fs-3 d-none d-sm-inline mx-3">Menu</span>
+        </button>
+    </div>
+    <div class="d-flex flex-column">
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav categoriesContainer">
+                
+                <li class="nav-item">
+                    <ul>
+                        <a data-bs-toggle="collapse" class="nav-link px-2 d-block" style="width: auto;">Categories:</a>
+                    </ul>
+                    
+                    <ul class="collapse  nav flex-column d-flex flex-wrap gap-2" style="width: auto" id="moviesCategory" data-bs-parent="#menu">
+                        <li *ngFor="let movCat of moviesCategory" class="nav-list">
+                            <a  [class.text-danger]="selectedMovieId == movCat.id" [routerLink]="['/All/Movies', movCat.id]" (click)="selectMovie(movCat.id)" class="nav-link">{{ movCat.name }}</a>
+                        </li>
+                    </ul>
+                    <ul class="collapse show nav flex-column  d-flex flex-wrap gap-2"  style="width: auto" id="seriesCategory" data-bs-parent="#menu">
+                        <li *ngFor="let serCat of seriesCategory" class="nav-list">
+                            <a [class.text-danger]="selectedSeriesId == serCat.id" [routerLink]="['/All/Series', serCat.id]" (click)="selectSeries(serCat.id)" class="nav-link ">{{ serCat.name }}</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <a data-bs-toggle="collapse" class="nav-link px-2 d-block" style="width: auto;" routerLink="/wishlist">Wishlist</a>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>               
+    </div>
+</nav>
+
+

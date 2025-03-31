@@ -1,0 +1,36 @@
+
+
+    <div class="container-fluid">
+        <app-nav-bar></app-nav-bar>
+    </div>
+    <div class="d-flex justify-content-center mx-3 my-3 gapping">
+        <h1 class="my-2">Movies</h1>
+        <button class="btn btn-warning" (click)="goToMovies()">Go To Movies Category</button>
+    </div>
+    <div class="container slider-container my-3 slider">
+            <div class="d-flex flex-row slide-track">
+                <ng-container *ngFor="let item of movImage; let i=index"  class="slide">
+                    <img   *ngIf="item!=null"  [src]="'https://image.tmdb.org/t/p/w500/'+item" >
+                 </ng-container>
+            </div>
+             
+            
+            
+    </div>
+    
+    <div class="d-flex justify-content-center mx-3 my-3 gapping">
+        <h1 class="my-2">Series</h1>
+        <button class="btn btn-warning" (click)="goToSeries()">Go To Series Category</button>
+    </div>
+   
+
+    <div class="container slider-container my-3 slider">
+        <div class="d-flex flex-row slide-track">
+            <ng-container *ngFor="let item of serImage; let i=index;" class="slide" >
+                <img  *ngIf="item!=null" [src]="'https://image.tmdb.org/t/p/w500/'+item" >
+            </ng-container>
+        </div>
+        
+       
+    </div>
+
